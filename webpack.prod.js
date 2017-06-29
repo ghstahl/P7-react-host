@@ -28,6 +28,14 @@ module.exports = {
         })
       },
       {
+        test: /\.scss$/i,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
+      },
+      {
+        test: /\.less$/i,
+        loader: ExtractTextPlugin.extract(['css-loader', 'less-loader']),
+      },
+      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
       },
@@ -35,10 +43,8 @@ module.exports = {
         test: /\.js/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react']
-          }
+          loader: 'babel-loader'
+
         }
       }
     ]

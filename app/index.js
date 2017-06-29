@@ -1,16 +1,23 @@
-import './css/index.css';
 import React from 'react';
+
 import { render } from 'react-dom';
-import  'react-router';
-import  'react-router-redux';
-import  'redux';
-import  'redux-batched-actions';
-import  'redux-persist';
-import  'redux-logger';
-import  'redux-thunk';
-import  'react-tap-event-plugin';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import 'font-awesome-webpack';
+import './styles/index.scss';
+
+
+import Root from './components/Root';
+import configureStore from './store/configureStore';
+
+injectTapEventPlugin();
+
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
-		<h1>Hello, World!</h1>,
-        document.getElementById('app')
-)
+  <Root store={store} history={history} />,
+  document.getElementById('app'),
+);
