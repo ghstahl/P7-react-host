@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "json": "cpx ./app/*.json                         dist       -v",
     "html": "cpx ./app/*.html                         dist       -v",
-    "postBuild": "npm-run-all html json",
+    "jqbootswatchbundle": "cpx node_modules/webpack2-bootswatch3-jquery3/dist/**/*   dist/externals/jqb  -v",
+    "postBuild": "npm-run-all html json jqbootswatchbundle",
     "serve": "webpack-dev-server --env=dev --hot",
     "build:dev": "webpack --env=dev --progress --profile --colors",
     "build:prod": "webpack --env=prod --progress --profile --colors",
@@ -66,6 +67,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
+    "webpack2-bootswatch3-jquery3": "git+https://github.com/ghstahl/webpack2-bootswatch3-jquery3.git",
     "whatwg-fetch": "^2.0.3"
   }
 }
